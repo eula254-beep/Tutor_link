@@ -1,0 +1,62 @@
+/* src/pages/Tutors.css */
+
+/* General */
+.tutor-page {
+  background-color: #f8faff;
+  min-height: 100vh;
+  padding-bottom: 50px;
+}
+
+.text-gradient {
+  background: linear-gradient(45deg, #0d6efd, #6610f2);
+  -webkit-background-clip: text; /* For Safari and Chrome */
+  -moz-background-clip: text; /* For Firefox (partial support) */
+   background-clip: text;
+  -webkit-text-fill-color: transparent; /* Makes text take background color */
+  -moz-text-fill-color: transparent;
+  color: transparent; /* Fallback for unsupported browsers */
+}
+
+
+/* Cards */
+.tutor-card {
+  border-radius: 20px;
+  transition: all 0.4s ease;
+  overflow: hidden;
+  background: #fff;
+}
+
+.tutor-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 25px rgba(0, 0, 0, 0.15);
+}
+
+.tutor-img-wrapper {
+  height: 230px;
+  overflow: hidden;
+  background: #f1f1f1;
+}
+
+.tutor-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  transition: transform 0.4s ease;
+}
+
+.tutor-card:hover .tutor-img {
+  transform: scale(1.1);
+}
+
+.rating {
+  color: #ffc107;
+  letter-spacing: 2px;
+}
+
+/* Footer */
+.tutor-footer {
+  background: linear-gradient(135deg, #0d6efd, #6610f2);
+  border-top-left-radius: 25px;
+  border-top-right-radius: 25px;
+  box-shadow: 0 -5px 20px rgba(0, 0, 0, 0.1);
+}
