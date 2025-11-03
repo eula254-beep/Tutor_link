@@ -6,6 +6,8 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "animate.css";
 import "./TutorProfile.css";
 
+const API_URL = process.env.REACT_APP_API_URL || "http://localhost:5000";
+
 export default function TutorProfile() {
   const { tutorId } = useParams();
   const [tutor, setTutor] = useState(null);
@@ -13,7 +15,7 @@ export default function TutorProfile() {
   useEffect(() => {
     const fetchTutor = async () => {
       try {
-        const { data } = await axios.get(`http://localhost:5000/api/tutors/${tutorId}`);
+        const { data } = await axios.get(`${API_URL}/api/tutors/${tutorId}`);
         setTutor(data);
       } catch (err) {
         console.error("Error fetching tutor:", err);

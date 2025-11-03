@@ -4,6 +4,8 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import "./MyBookings.css";
 
+const API_URL = process.env.REACT_APP_API_URL || "http://localhost:5000";
+
 export default function MyBookings() {
   const [bookings, setBookings] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -17,7 +19,7 @@ export default function MyBookings() {
         const token = localStorage.getItem("userToken");
         if (!token) return navigate("/login");
 
-        const { data } = await axios.get("http://localhost:5000/api/bookings/my", {
+        const { data } = await axios.get(`${API_URL}/api/bookings/my`, {
           headers: { Authorization: `Bearer ${token}` },
         });
         setBookings(data);
@@ -35,7 +37,7 @@ export default function MyBookings() {
     if (!window.confirm("Are you sure you want to cancel this booking?")) return;
     try {
       const token = localStorage.getItem("userToken");
-      await axios.delete(`http://localhost:5000/api/bookings/${id}`, {
+      await axios.delete(`${API_URL}/api/bookings/${id}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       setBookings(bookings.filter((b) => b._id !== id));
@@ -65,7 +67,7 @@ export default function MyBookings() {
       const token = localStorage.getItem("userToken");
 
       const { data } = await axios.post(
-        "http://localhost:5000/api/payments/stkpush",
+        `${API_URL}/api/payments/stkpush`,
         {
           amount: booking.amount || 10,
           phoneNumber: phone,

@@ -3,6 +3,8 @@ import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
+const API_URL = process.env.REACT_APP_API_URL || "http://localhost:5000";
+
 function AddTutor() {
   const navigate = useNavigate();
 
@@ -34,7 +36,7 @@ function AddTutor() {
     }
 
     try {
-      await axios.post("http://localhost:5000/api/tutors", formData);
+      await axios.post(`${API_URL}/api/tutors`, formData);
       setSuccessMessage("Tutor added successfully!");
       // Clear form
       setFormData({ name: "", subject: "", email: "", bio: "" });

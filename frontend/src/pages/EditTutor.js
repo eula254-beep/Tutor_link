@@ -2,10 +2,12 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useParams, useNavigate } from "react-router-dom";
 
+const API_URL = process.env.REACT_APP_API_URL || "http://localhost:5000";
+
 export default function EditTutor() {
   const { id } = useParams();
   const navigate = useNavigate();
-  const API = "http://localhost:5000/api/tutors";
+  const API = `${API_URL}/api/tutors`;
 
   const [form, setForm] = useState({ name: "", subject: "", price: "", email: "", bio: "" });
   const [loading, setLoading] = useState(true);

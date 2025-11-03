@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useParams, useNavigate, useLocation } from "react-router-dom";
 
+const API_URL = process.env.REACT_APP_API_URL || "http://localhost:5000";
+
 function BookSessionF() {
   const { tutorId: urlTutorId } = useParams();
   const navigate = useNavigate();
@@ -30,7 +32,7 @@ function BookSessionF() {
   useEffect(() => {
     const fetchTutors = async () => {
       try {
-        const { data } = await axios.get("http://localhost:5000/api/tutors");
+        const { data } = await axios.get(`${API_URL}/api/tutors`);
         setTutors(data);
       } catch (err) {
         console.error("Error fetching tutors:", err);
@@ -62,7 +64,7 @@ function BookSessionF() {
       if (!token) throw new Error("Not authorized");
 
       await axios.post(
-        "http://localhost:5000/api/bookings",
+        `${API_URL}/api/bookings`,
         formData,
         { headers: { Authorization: `Bearer ${token}` } }
       );

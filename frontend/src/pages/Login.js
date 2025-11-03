@@ -2,7 +2,9 @@ import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
-import "bootstrap-icons/font/bootstrap-icons.css"; // Bootstrap icons
+import "bootstrap-icons/font/bootstrap-icons.css";
+
+const API_URL = process.env.REACT_APP_API_URL || "http://localhost:5000";
 
 export default function Login() {
   const [email, setEmail] = useState("");
@@ -16,7 +18,7 @@ export default function Login() {
     setError("");
     setSuccess("");
     try {
-      const { data } = await axios.post("http://localhost:5000/api/users/login", {
+      const { data } = await axios.post(`${API_URL}/api/users/login`, {
         email,
         password,
       });

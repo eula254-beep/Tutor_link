@@ -7,6 +7,8 @@ import "aos/dist/aos.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./Tutors.css";
 
+const API_URL = process.env.REACT_APP_API_URL || "http://localhost:5000";
+
 export default function Tutors() {
   const [tutors, setTutors] = useState([]);
   const [filteredTutors, setFilteredTutors] = useState([]);
@@ -23,7 +25,7 @@ export default function Tutors() {
   useEffect(() => {
     const fetchTutors = async () => {
       try {
-        const { data } = await axios.get("http://localhost:5000/api/tutors");
+        const { data } = await axios.get(`${API_URL}/api/tutors`);
         setTutors(data);
         setFilteredTutors(data);
       } catch (err) {

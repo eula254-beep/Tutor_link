@@ -1,0 +1,10 @@
+# Ignore frontend files during backend deployment
+frontend/
+
+# Development files
+*.md
+.git
+.gitignore
+
+# Environment examples
+.env.example
